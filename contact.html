@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Bemris</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    function handleFormSubmit() {
+      setTimeout(function() {
+        document.getElementById('formContainer').style.display = 'none';
+        document.getElementById('thankYouMessage').style.display = 'block';
+      }, 1000);
+    }
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header -->
+    <header>
+      <h1>Bemris</h1>
+      <p>Innovating in Florida Since 2025</p>
+    </header>
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <!-- Main Content -->
+    <div class="content">
+      <div class="container">
+        <section id="contact">
+          <h2>Contact Us</h2>
+          <p>Please fill out the form below and we'll get back to you as soon as possible.</p>
+          <div id="formContainer">
+            <form action="https://docs.google.com/forms/d/1SC_Hs6NaBEIeRmDZwCG0SYgVR47IPHpbqLPTLGx7lbI/formResponse" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit();">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="entry.286016800" required placeholder="Your Name">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="emailAddress" required placeholder="Your Email">
+              <label for="subject">Subject:</label>
+              <input type="text" id="subject" name="entry.342022558" required placeholder="Subject">
+              <label for="message">Message:</label>
+              <textarea id="message" name="entry.1638878292" required placeholder="Your Message" rows="5"></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+          <div id="thankYouMessage">
+            <h2>Thank You!</h2>
+            <p>Your message has been sent. We will contact you shortly.</p>
+          </div>
+        </section>
+        <section id="contactInfo">
+          <h2>Our Contact Information</h2>
+          <p><strong>Bemris LLC</strong></p>
+          <p>Phone: +1 (407) 796-1114</p>
+          <p>Address: 1150 Nw 72nd Ave Tower 1 Ste 455 #19425, Miami, Florida 33126</p>
+          <p>Website: <a href="https://www.bemris.com" target="_blank">www.bemris.com</a></p>
+        </section>
+      </div>
+    </div>
+    <!-- Hidden Iframe for Form Response -->
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Bemris. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
