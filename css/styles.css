@@ -173,4 +173,18 @@
       padding: 10px;
     }
   }
+  .contact-info p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+.contact-info a:hover {
+    text-decoration: underline;
+  }
+
   
