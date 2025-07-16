@@ -12,6 +12,15 @@
         document.getElementById('thankYouMessage').style.display = 'block';
       }, 1000);
     }
+
+    function resetForm() {
+      document.getElementById('formContainer').style.display = 'block';
+      document.getElementById('thankYouMessage').style.display = 'none';
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
+    }
   </script>
 </head>
 <body>
@@ -50,6 +59,7 @@
           <div id="thankYouMessage">
             <h2>Thank You!</h2>
             <p>Your message has been sent. We will contact you shortly.</p>
+            <button onclick="resetForm()">Go Back</button>
           </div>
         </section>
         <section id="contactInfo">
