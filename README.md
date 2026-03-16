@@ -138,7 +138,7 @@ The Salesforce page form:
 - submits to Google Forms using JavaScript
 
 Current form endpoint:
-- `https://docs.google.com/forms/d/1SC_Hs6NaBEIeRmDZwCG0SYgVR47IPHpbqLPTLGx7lbI/formResponse`
+- `https://docs.google.com/forms/d/YOUR_FORM_ID/formResponse`
 
 The visible form lives in:
 - `salesforce-admin.html`
@@ -149,7 +149,7 @@ For exact field mapping and editing instructions:
 ## Analytics
 
 Google Analytics 4 is installed on the site with the GA4 measurement ID:
-- `G-519RGKN7FS`
+- `G-XXXXXXXXXX`
 
 GA4 is included in:
 - `index.html`
