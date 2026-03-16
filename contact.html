@@ -12,11 +12,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      if (window.location.pathname.endsWith('/contact.html')) {
+        window.history.replaceState(null, '', '/contact');
+      }
+    </script>
     <script type="module" crossorigin src="./assets/index-D2RM8O5o.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BxS1wpav.css">
+    <style>
+      .salesforce-cta {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 120;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #0176d3 0%, #0b5cab 100%);
+        color: #fff;
+        font: 700 14px/1.2 "Inter", system-ui, sans-serif;
+        text-decoration: none;
+        box-shadow: 0 18px 40px rgba(1, 118, 211, 0.32);
+      }
+
+      .salesforce-cta span {
+        font-weight: 500;
+        opacity: 0.9;
+      }
+
+      @media (max-width: 640px) {
+        .salesforce-cta {
+          left: 12px;
+          right: 12px;
+          bottom: 12px;
+          justify-content: center;
+        }
+      }
+    </style>
     <script>window.__INITIAL_ROUTE__ = '/contact';</script>
   </head>
   <body>
     <div id="root"></div>
+    <a class="salesforce-cta" href="/salesforce-admin.html">Certified Salesforce Admin <span>View page</span></a>
   </body>
 </html>

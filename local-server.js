@@ -9,6 +9,7 @@ const routeMap = {
   '/services': 'services.html',
   '/contact': 'contact.html',
   '/testimonials': 'testimonials.html',
+  '/salesforce-admin': 'salesforce-admin.html',
 };
 
 // Serve static files from the repo root so local preview matches GitHub Pages output.

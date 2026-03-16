@@ -22,6 +22,7 @@ class SPAHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             '/services': '/services.html',
             '/contact': '/contact.html',
             '/testimonials': '/testimonials.html',
+            '/salesforce-admin': '/salesforce-admin.html',
         }
 
         # Serve the matching HTML file for clean GitHub Pages-style routes.
@@ -46,4 +47,5 @@ with socketserver.TCPServer(("", PORT), SPAHTTPRequestHandler) as httpd:
     print(f"  - http://localhost:{PORT}/services") 
     print(f"  - http://localhost:{PORT}/contact")
     print(f"  - http://localhost:{PORT}/testimonials")
+    print(f"  - http://localhost:{PORT}/salesforce-admin")
     httpd.serve_forever()

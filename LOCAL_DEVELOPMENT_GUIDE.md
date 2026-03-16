@@ -44,6 +44,7 @@ node local-server.js
 - `/services` → serves `services.html`
 - `/contact` → serves `contact.html`
 - `/testimonials` → serves `testimonials.html`
+- `/salesforce-admin` → serves `salesforce-admin.html`
 - unknown routes → serve `404.html`
 
 ## Files Included
