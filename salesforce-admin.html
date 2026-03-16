@@ -40,6 +40,15 @@
       name="twitter:image"
       content="https://bemris.com/assets/bemris%20logo_1752973993415-jtu8LomD.png"
     />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-519RGKN7FS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-519RGKN7FS');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -545,10 +554,17 @@
               for you.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#salesforce-form">Request Salesforce Support</a>
+              <a
+                class="button button-primary"
+                href="#salesforce-form"
+                id="sf-hero-request"
+              >
+                Request Salesforce Support
+              </a>
               <a
                 class="button button-secondary"
                 href="mailto:info@bemris.com?subject=Salesforce%20Admin%20Support"
+                id="sf-email-link"
               >
                 Email Bemris
               </a>
@@ -686,7 +702,13 @@
             project, or ongoing Salesforce Admin support.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#salesforce-form">Talk About Your Salesforce Needs</a>
+            <a
+              class="button button-primary"
+              href="#salesforce-form"
+              id="sf-cta-request"
+            >
+              Talk About Your Salesforce Needs
+            </a>
             <a class="button button-secondary" href="/about.html">Learn More About Bemris</a>
           </div>
           <div class="cta-meta">
@@ -767,6 +789,47 @@
         const form = document.getElementById("salesforce-support-form");
         const status = document.getElementById("sf-status");
         const submit = document.getElementById("sf-submit");
+        const emailLink = document.getElementById("sf-email-link");
+        const heroRequest = document.getElementById("sf-hero-request");
+        const ctaRequest = document.getElementById("sf-cta-request");
+
+        function trackEvent(name, params) {
+          if (typeof window.gtag === "function") {
+            window.gtag("event", name, params);
+          }
+        }
+
+        if (emailLink) {
+          emailLink.addEventListener("click", function () {
+            trackEvent("salesforce_email_click", {
+              page_location: window.location.href,
+              page_title: document.title,
+              link_text: "Email Bemris",
+            });
+          });
+        }
+
+        if (heroRequest) {
+          heroRequest.addEventListener("click", function () {
+            trackEvent("salesforce_cta_click", {
+              page_location: window.location.href,
+              page_title: document.title,
+              cta_location: "hero",
+              cta_text: "Request Salesforce Support",
+            });
+          });
+        }
+
+        if (ctaRequest) {
+          ctaRequest.addEventListener("click", function () {
+            trackEvent("salesforce_cta_click", {
+              page_location: window.location.href,
+              page_title: document.title,
+              cta_location: "form_section",
+              cta_text: "Talk About Your Salesforce Needs",
+            });
+          });
+        }
 
         if (!form || !status || !submit) {
           return;
@@ -811,8 +874,18 @@
 
             form.reset();
             status.textContent = "Message sent successfully. We will get back to you soon.";
+            trackEvent("salesforce_form_submit", {
+              page_location: window.location.href,
+              page_title: document.title,
+              service_interest: service,
+            });
           } catch (error) {
             status.textContent = "Message sent successfully. We will get back to you soon.";
+            trackEvent("salesforce_form_submit", {
+              page_location: window.location.href,
+              page_title: document.title,
+              service_interest: service,
+            });
           } finally {
             submit.disabled = false;
           }
