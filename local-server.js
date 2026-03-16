@@ -2,13 +2,24 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = 3000;
+const rootDir = __dirname;
+const routeMap = {
+  '/': 'index.html',
+  '/about': 'about.html',
+  '/services': 'services.html',
+  '/contact': 'contact.html',
+  '/testimonials': 'testimonials.html',
+};
 
-// Serve static files from dist/public directory
-app.use(express.static(path.join(__dirname, 'dist/public')));
+// Serve static files from the repo root so local preview matches GitHub Pages output.
+app.use(express.static(rootDir));
 
-// Handle React Router - send all requests to index.html
+app.get(Object.keys(routeMap), (req, res) => {
+  res.sendFile(path.join(rootDir, routeMap[req.path]));
+});
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/public', 'index.html'));
+  res.status(404).sendFile(path.join(rootDir, '404.html'));
 });
 
 app.listen(port, () => {

@@ -15,15 +15,27 @@ class SPAHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         # Parse the URL
         parsed_path = urlparse(self.path)
         path = parsed_path.path
-        
-        # If requesting a specific route that doesn't exist as a file, serve index.html
-        if path in ['/about', '/services', '/contact', '/testimonials'] or path.startswith('/about/') or path.startswith('/services/') or path.startswith('/contact/') or path.startswith('/testimonials/'):
-            self.path = '/index.html'
+
+        route_map = {
+            '/': '/index.html',
+            '/about': '/about.html',
+            '/services': '/services.html',
+            '/contact': '/contact.html',
+            '/testimonials': '/testimonials.html',
+        }
+
+        # Serve the matching HTML file for clean GitHub Pages-style routes.
+        if path in route_map:
+            self.path = route_map[path]
+        elif path.startswith('/assets/'):
+            self.path = path
+        elif '.' not in os.path.basename(path):
+            self.path = '/404.html'
         
         return super().do_GET()
 
 PORT = 8000
-web_dir = os.path.join(os.path.dirname(__file__), 'dist', 'public')
+web_dir = os.path.dirname(__file__)
 os.chdir(web_dir)
 
 with socketserver.TCPServer(("", PORT), SPAHTTPRequestHandler) as httpd:

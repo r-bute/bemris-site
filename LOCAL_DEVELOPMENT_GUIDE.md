@@ -1,12 +1,12 @@
-# Running Bemris Website Locally with Full Routing
+# Running Bemris Website Locally
 
 ## The Problem
-Simple file servers (like Live Server or `python -m http.server`) can't handle Single Page Application (SPA) routing. When you visit `/about`, they look for an `about/index.html` file that doesn't exist.
+Simple file servers do not always mirror GitHub Pages routing cleanly. This repo uses page-specific HTML files like `about.html`, while visitors see clean URLs like `/about`.
 
 ## Solutions for Local Development
 
 ### Option 1: Python Server (Recommended)
-I've created a custom Python server that handles SPA routing:
+This server maps clean routes to the matching HTML files in the repo root:
 
 ```bash
 # Navigate to your website folder
@@ -36,36 +36,26 @@ node local-server.js
 
 **Visit:** http://localhost:3000 (all routes work)
 
-### Option 3: Use the Replit Development Server
-Since your website was built here, you can run it locally:
+## How Routing Works Here
 
-```bash
-# In this Replit environment
-npm run dev
-```
-
-**Visit:** http://localhost:5000 (all routes work with hot reloading)
-
-## Why Simple Servers Don't Work
-
-**❌ Live Server/Simple HTTP Server:**
-- `/` → serves `index.html` ✓
-- `/about` → looks for `about/index.html` ✗ (404 error)
-
-**✅ SPA-Aware Server:**
-- `/` → serves `index.html` ✓  
-- `/about` → serves `index.html` + React Router handles the route ✓
+**✅ GitHub Pages-style preview:**
+- `/` → serves `index.html`
+- `/about` → serves `about.html`
+- `/services` → serves `services.html`
+- `/contact` → serves `contact.html`
+- `/testimonials` → serves `testimonials.html`
+- unknown routes → serve `404.html`
 
 ## Files Included
-- `serve.py` - Python server with SPA routing
-- `local-server.js` - Express server with SPA routing
+- `serve.py` - Python server for clean local routes
+- `local-server.js` - Express server for clean local routes
 - Instructions for both approaches
 
 ## Testing Your Site Locally
 Once running with the proper server:
 1. **Navigation works** - click About, Services, Contact, Testimonials
 2. **Direct URLs work** - type `/about` in browser address bar
-3. **Microinteractions work** - contact form animations function properly
-4. **All features work** - exactly like it will on GitHub Pages
+3. **404 handling works** - try a made-up URL and confirm the fallback page appears
+4. **Assets load correctly** - styles, scripts, and images should render normally
 
-Your Bemris website will run perfectly locally with full routing support!
+These local servers now reflect the GitHub Pages structure checked into this repo.
